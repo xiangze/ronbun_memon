@@ -15,3 +15,6 @@ back propagationの式をSDEとして書ける。
 
 ## 実装
  https://diffeqflux.sciml.ai/stable/examples/neural_sde/
+
+## 関連研究
+Infinitely Deep Bayesian Neural Networks with Stochastic Differential Equations https://arxiv.org/abs/2102.06559
