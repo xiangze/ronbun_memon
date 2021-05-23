@@ -1,4 +1,4 @@
-- Mechanics_of_n-Player Differentiable Games
+# Mechanics_of_n-Player Differentiable Games
 
 - URL
 https://arxiv.org/abs/1802.05642
