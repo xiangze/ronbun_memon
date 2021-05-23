@@ -40,6 +40,8 @@ https://arxiv.org/abs/2002.09547
 ### Rough Path Theory
  SDEのpathの性質
  ODEの解で近似できるということが言える
+ https://arxiv.org/abs/2009.08295
+ 
 ### Stratonovich formへの変換と
 
 ### Wong–Zakai approximations
