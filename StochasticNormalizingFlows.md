@@ -1,9 +1,36 @@
 # Stochastic Normalizing Flows
 
+確率的要素を入れることでサンプリングの表現力、効率が上がることを主張している。
+同名の論文が2つある。
+
 ## その１
 https://arxiv.org/abs/2002.06707
 
- https://github.com/noegroup/stochastic_normalizing_flows
+### 既存研究
+- Normalizing Flowsはforward,reverse modeで学習される
+- 可逆関数の変換には制約がある （サンプル空間がa non-trivial Lie groupにより制約される。 単峰型関数をベースにすることによるBi-Lipschitz constraints)
+
+実装 https://github.com/noegroup/stochastic_normalizing_flows
+
+### model式とtraining
+
+forward / backward path  (y1, . . . , yT ),  (yT −1, . . . , y0). を確率に基づいてサンプルする
+
+forward and backward pathの分布間KL divergenceが最小になるように学習を行う。
+
+Asymptotically unbiased samplingである。
+
+### Implementing SNFs via Annealed Importance Sampling
+Langevin＋MCMC
+(Annealed Importance Sampling https://arxiv.org/abs/physics/9803008)
+### result
+
+- 簡単な白黒画像データ、1次元2山ポテンシャル
+をターゲット分布としたサンプリングでdivergenseが低いことを確認している。
+- Alanine dipeptid(化合物)の様々な形状？のサンプリング
+- VAEの推論に用いた場合 dataset MNIST,Fashion MNIST
+-
+### 関連研究
 
 ## その2
 https://arxiv.org/abs/2002.09547
