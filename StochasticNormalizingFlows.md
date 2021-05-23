@@ -37,6 +37,19 @@ https://arxiv.org/abs/2002.09547
 
 確率要素を入れたNormalizing Flowsの拡張
 
+### Rough Path Theory
+ SDEのpathの性質
+ ODEの解で近似できるということが言える
+### Stratonovich formへの変換と
+
+### Wong–Zakai approximations
+roughなpathの近似方法
+
+### Main result(定理)
+```
+Using Wong–Zakai approximations, a Stratonovich SDE can be uniformly approximated in Hölder norm by random ODEs
+```
+
 ### 数値実験
 - banana-shaped distributionのサンプリング
  p(x, y) ∝ exp( −1/2(x^2+1/2(x^2+y^2))
