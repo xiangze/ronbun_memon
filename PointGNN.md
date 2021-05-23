@@ -60,9 +60,12 @@ Car, Pedestrian and Cyclistに対してのaverage precision Pedestrianに対し�
 tensorflow
 https://github.com/WeijingShi/Point-GNN
 
-pytorch geometricを使っている
+pytorch
 
 https://github.com/rui-qian/Point-GNN.pytorch-1
+
+pytorch geometricを使っている
+
 https://colab.research.google.com/drive/1D45E5bUK3gQ40YpZo65ozs7hg5l-eo_U?usp=sharing
 
 性能のまとめサイト
