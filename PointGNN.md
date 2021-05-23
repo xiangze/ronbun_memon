@@ -11,21 +11,38 @@ https://openaccess.thecvf.com/content_CVPR_2020/papers/Shi_Point-GNN_Graph_Neura
 
 ## 関連研究
 
+## 手法
 素朴なGNN
 
 $v_{t+1} =g^t (ρ {e^t_{ij} | (i,j) ¥in E},v_i^t)  $
-$e^t_{ij} =f^t ()$
+
+$e^t_{ij} =f^t (v_i^t,v_j^t,)$
 (2)
 
-v: vertex
-e: edge
-t:iteration回数
+ - v: vertex
+ - e: edge
+ - t:iteration回数
 
-に対してVertexの状態sを隣接Vertex x とvertexからの変位Δxで表現する
+に対してVertexの状態sを隣接Vertex x のsで更新するようにし(3), さらにvertexからの変位Δxで表現するのが本手法（auto-registration)( 4)
 
-(3)
+$s_i^{t+1}=g^t (ρ {f^t (x_j -x_i ,s_j^t) | (i,j) ¥in E},s_i^t) $ (3)
+
+$ ∆x_i^t t = h^t(s^t_i) $
+$ s_i^{t+1} =g^t ({f^t (x_j -x_i ＋ Δx_i^t ,s_j^t)},s_i^t) $ 
 
 (4)
+
+最終的に3つのMLP,edgeに沿ったaggregationによって構成される(5)。
+
+$ ∆x_i^t t = MLP_h^t(s^t_i) $
+$ e_ij^t=MLP_f^t ([x_j-x_i+Δx_i^j,s_j^t])
+$ s_i[{t+1}=MLP_g^t(Max (e_{ij} |(i.j) ¥in E } ))_+s_i^t $
+
+### loss
+- average cross-entropy loss as the classification loss
+- localization loss (位置のずれのHurber loss)
+- L1 regularization to each MLP
+の和
 
 ### Box Merging and Scoring
 出力される複数の重複するbounding boxの併合(RCNNなのでも行われる)。occluded objectに対して
