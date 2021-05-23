@@ -31,3 +31,8 @@ dZ_t=(-2σ(Z_t)^2 Z_t/(1+Z_t^2) +1/2 σ'(Z_t))dt+σ(Z_t)dB_t
 
 pyro https://pyro.ai/examples/normalizing_flows_i.html
  
+## 参考文献
+- Neural SDE: Stabilizing Neural ODE Networks with Stochastic Noise https://arxiv.org/abs/1906.02355
+ -  https://diffeqflux.sciml.ai/stable/examples/neural_sde/ DiffEqFlux.jlを用いた実装
+- Score-Based Generative Modeling through Stochastic Differential Equations https://openreview.net/forum?id=PxTIG12RRHS
+も関係するかもしれない
