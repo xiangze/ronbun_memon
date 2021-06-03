@@ -35,8 +35,37 @@ Langevin＋MCMC
 ## その2
 https://arxiv.org/abs/2002.09547
 
-確率要素を入れたNormalizing Flowsの拡張
+確率要素を入れた連続的Normalizing Flowsの拡張
 
+## 概要で語られる課題
+一般に学習過程をSDEで記述したい。stochastic SDE deep latent gaussian modelの極限
+　ノイズ、敵対的データに対する頑健性
+    形式的に置き換える方法もある(A Complete Recipe for Stochastic Gradient MCMC  https://arxiv.org/pdf/1506.04696.pdf)
+normalizing flowの連続極限においてSDEベースの方法を一般的な形で構築したい->難しい
+
+- Girsanovの定理を満たすような変分推論を構築する。それに異なるドリフト係数によって2つのSDKの解(事前、事後分布)の分布間のKL divergenseを推定することができる()。(もう一つの方は(https://arxiv.org/abs/2002.06707)が有限ステップで
+forward/backwardのKL divergence(KL[pX//µX] or KL[µX//pX])を最小化するというステップを提示している。)
+- stochastic adjoint 法を使ってSDEをVAEのモデルとして記述している()
+- 確率演算はSDEの近似解(backward解)としては不良推定なため　理論的正当化は難しい
+ -  難しさは拡散項の非対角成分に由来する
+ -  高階adaptive SDE solver,乱数の種から構成されるのブラウン運動の複雑な平均
+既存の方法では理論的正当化は難しい
+
+変分推論とMCMCをベイジアン計算(確率的計算)のなかに位置付ける研究
+- 複数の可逆MCをVIに組み込む(Markov Chain Monte Carlo and Variational Inference: Bridging the Gap https://arxiv.org/abs/1410.6460) HMCに対して(https://arxiv.org/pdf/1609.08203.pdf)
+- kerneled Stein discrepancyからくる手法を用いてstochastic gradient Langevinのstep幅を決定する
+- Langevin flowがstochastic MCMCとSDEの関係から提唱されている
+- Langevin flowはSDEのlog-likelihoodの近似と言える
+
+## contribution
+
+SDEから作られた生成モデルをnormalizing flowを用いて近似する手法
+理論の鍵はrough path theory
+これによって
+- autoencoderを使った任意のSDEに対する密度推定、最尤推定、 変分近似が可能になる
+- 任意の連続的normalizing flowで実装できる
+- neural ODEのアプローチをSDEに移行できる
+- 
 ### Rough Path Theory
  SDEのpathの性質
  ODEの解で近似できるということが言える
