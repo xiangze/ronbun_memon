@@ -1,0 +1,9 @@
+= Fluctuating Non-linear Non-equilibrium System in Terms of Nambu Thermodynamics
+南部括弧はポアッソン括弧を多変数に拡張したものでそれを使うと非平衡非線形な系を記述できるとしてBZ反応の時間発展を解析力学のように書いている。
+論文ではその前にハミルトニアンを複素数に拡張することで非平衡散逸系のエントロピー生成率を書いている
+https://arxiv.org/abs/2209.08469
+
+体系的にハミルトニアンとエントロピーを書く方法があるのだろうか。
+
+Non Hamiltonian Chaos from Nambu Dynamics of Surfaces
+南部括弧で書ける系でカオスあるんだ arxiv.org/abs/1109.0470
