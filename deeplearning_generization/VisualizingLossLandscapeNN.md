@@ -17,8 +17,11 @@ notebook付き　以下の実装の参考になる
 
 ## pytorch実装
 https://github.com/xiangze/loss-landscape
-pretraind weightをダウンロードして固定点近傍の1D,2D surfaceをplotできる．
-なぜかmpiに対応しているpython
+pretraind weightをダウンロードして固定点近傍の1D,2D surfaceをplotできる．なぜかmpiに対応しているpython
+
+https://github.com/xiangze/loss-landscape/blob/64ef4d57f8dabe79b57a637819c44e48eda98f33/plot_hessian_eigen.py#L60
+巨大なヘッシアンの固有値算出、繰り返し法で最大、最小の固有値を求めている。
+	ｰ>最大、最小値を取り除いていけば順次固有値が求まるのだろうか(素朴法)。QR分解とどっちがいい？
 
 ## 被引用リスト
 https://scholar.google.co.jp/scholar?q=Visualizing+the+Loss+Landscape+of+Neural+Nets&hl=ja&as_sdt=0&as_vis=1&oi=scholart
@@ -27,7 +30,6 @@ https://www.google.com/search?q=Visualizing+the+Loss+Landscape+of+Neural+Nets&so
 https://losslandscape.com/ LANDSCAPE
 
 ## 関係ありそうな論文
-
 - [1710.05468] Generalization in Deep Learning
  	   arXiv:1710.05468 - Google 検索  1710.05468.pdf arXiv:1710.05468 - Google 検索
 - [1703.04933] Sharp Minima Can Generalize For Deep Nets
@@ -41,4 +43,4 @@ https://losslandscape.com/ LANDSCAPE
 ## 議論
 - 生成モデルのサンプリングでは　平衡状態が仮定されているのだろうか
 - 過渡状態、非平衡な軌道上の相体積に意味はあるのか．
-- 
+- 過渡状態のヘッシアン固有値を求めるのは大変そう
