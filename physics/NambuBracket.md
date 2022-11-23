@@ -1,36 +1,35 @@
-= Fluctuating Non-linear Non-equilibrium System in Terms of Nambu Thermodynamics
+# Fluctuating Non-linear Non-equilibrium System in Terms of Nambu Thermodynamics
 南部括弧はポアッソン括弧を多変数に拡張したものでそれを使うと非平衡非線形な系を記述できるとしてBZ反応の時間発展を解析力学のように書いている。
 論文ではその前にハミルトニアンを複素数に拡張することで非平衡散逸系のエントロピー生成率を書いている
 https://arxiv.org/abs/2209.08469
 
 体系的にハミルトニアンとエントロピーを書く方法があるのだろうか。
-* カオスとの関係
-Non Hamiltonian Chaos from Nambu Dynamics of Surfaces
-南部括弧で書ける系でカオスあるんだ arxiv.org/abs/1109.0470
 
-* 関連情報
-https://twitter.com/adhara_mathphys/status/1038021500907937797
-南部力学と南部ブラケット
+# カオスとの関係
+Non Hamiltonian Chaos from Nambu Dynamics of Surfaces https://arxiv.org/abs/1109.0470
+
+# 関連情報
+- https://twitter.com/adhara_mathphys/status/1038021500907937797
+- 南部力学と南部ブラケット
 https://www.jstage.jst.go.jp/article/butsuri/72/4/72_231/_article/-char/ja/
 南部力学と南部ブラケットは，通常のハミルトン形式の拡張として，南部が1973年に提唱した新しい力学形式である．その概要と意義を非専門家向きに解説する．また，弦理論およびM理論との関連，影響についても簡単に触れる．
+- 南部の発想の源を求めて：なぜ最後に流体力学か https://www.jstage.jst.go.jp/article/butsuri/72/4/72_236/_pdf/-char/ja
 
-オイラー方程式の南部力学表現について
+- オイラー方程式の南部力学表現について
 https://dl.ndl.go.jp/view/download/digidepo_8766159_po_noauth.html%40d%3D28-6danwasitu.pdf%26dir%3D78.pdf?contentNo=1&alternativeNo=
 https://www.nagare.or.jp/download/noauth.html?d=28-6danwasitu.pdf&dir=145
 
-最初の論文がすでにノーベル賞クラスだった南部陽一郎
-現代化学　2009　3月号
-南部陽一郎の独創性の秘密をさぐる（2）
+- 最初の論文がすでにノーベル賞クラスだった南部陽一郎  現代化学　2009　3月号 南部陽一郎の独創性の秘密をさぐる（2）
 http://jimnishimura.jp/tech_soc/chem_todaynambu/chem_today0903/09_03.html
 
-堀越　篤史
+- 堀越　篤史
 https://www.risys.gl.tcu.ac.jp/Main.php?action=01&type=detail&tchCd=5001690
 https://researchmap.jp/horikosi/research_projects/12776932
 南部力学に基づいた新しい分子動力学法の開発と量子ダイナミクス計算への応用
 南部力学とは1973年に南部陽一郎により提案された一般化ハミルトン力学であり，N個の正準変数とN-1個のハミルトニアンを持つユニークな力学である。本研究では，量子力学における演算子の期待値の半古典ダイナミクスが南部力学により記述されることを明らかにし，トンネル効果やエネルギー移動などの量子力学的な現象が南部力学のダイナミクスとして正しく再現されることを二つのモデル系で確認した。また，ハミルトン力学に基づいた通常の分子動力学法におけるシンプレクティック数値積分法や能勢・フーバー型熱浴といった技法に対して，それらの南部力学版の開発を行った。
 https://researchmap.jp/horikosi/published_papers/24620790
 
-南部力学がつなぐ時空トポロジーとミクロ・マクロ渦磁場構造形成
+- 南部力学がつなぐ時空トポロジーとミクロ・マクロ渦磁場構造形成
 https://indico.nitep.osaka-cu.ac.jp/event/65/
 
 本研究集会は、南部力学によって、ヘリシテイやカイラリティによって特徴づけられるミクロ物質から宇宙スケールの大規模秩序構造を俯瞰し、その形成の秘密に迫ろうとするものである。実験技術の進歩によって、20世紀末には、レーザー冷却イオントラップによって量子渦が作られ、最近では、相対論的重イオン衝突実験によって、カイラル物質とよばれる新物質が生成されるようになった。ヘリシティは素粒子に対して発見されたが、流体渦度場に対する不変量にも同じ名称が当てられ、「右巻き」と「左巻き」を区別する指標である点が共通する。このように、流体・プラズマ系、凝集系、原子・分子（化学反応）、高エネルギー・ハドロン系には、階層の違いはあれ、カイラリティによって特徴づけられる物質や渦・磁場（スピン・ゲージ場）構造が遍く存在するが、それらの形成過程には謎が多い。
@@ -44,11 +43,13 @@ https://indico.nitep.osaka-cu.ac.jp/event/65/
 時空のトポロジーは非正準ハミルトン構造の中に隠れている。
 南部括弧はエネルギーに加えてカシミール不変量にもハミルトニアンの役割をもたせる。流体系の場合はヘリシティ、渦・磁場、スピン・ゲージ場などを記述できる。南部括弧には保存則を厳密に保つ数値計算法の構築など、応用面でのイノベーションにも期待がもてる。
 
-https://www.jstage.jst.go.jp/article/butsuri/72/4/72_231/_pdf
-南部力学と南部ブラケット
-1973 年 GHD論文
+- https://www.jstage.jst.go.jp/article/butsuri/72/4/72_231/_pdf 南部力学と南部ブラケット 1973 年 GHD論文
 
-非可換空間上の流体力学
-https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2117-06.pdf
+- 非可換空間上の流体力学 https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2117-06.pdf
 
-BZ反応
+- BZ反応
+
+$\dot{X}= k_1AY  − k_2XY + k_3AX − 2 k_4 X^2 $ 
+$\dot{Y}= −k_1AY − k_2XY + h k_5BZ$ 
+$\dot{Z}= 2k_3AX − k_5BZ $
+
