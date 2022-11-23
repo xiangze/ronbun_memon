@@ -1,10 +1,37 @@
 https://arxiv.org/abs/1712.09913
 
-論文調査　https://www.coyote009.com/loss-landscape
+# 論文調査
+https://www.coyote009.com/loss-landscape
 https://www.coyote009.com/wp-content/uploads/2022/03/li2018_visualizing_loss_landscape.pdf
-- 例えば、Loss関数のFlatness/Sharpnessと、汎化性能に相関があるというこれまでの主張は本当か？
-- 既存の取組み(1) • 重み空間中の2点間を結ぶ直線上のLoss関数のプロファイルをとる [Goodfellowなど]
-- 
+## 問い：学習しやすいネットワークとは？　アーキテクチャ？パラメーター？
+   - loss関数の可視化で何かがわかるか
+   - 例えば、Loss関数のFlatness/Sharpnessと、汎化性能に相関があるというこれまでの主張は本当か？
+## 既存の取組み
+   -(1) 重み空間中の2点間を結ぶ直線 $\theta_a=(1-a)\theta+a\theta$ 上のLoss関数のプロファイルをとる [Goodfellowなど]
+   - (2) 1,2次元グリッド
+   - 問題点 Reluなど活性化関数によるスケール不定性があり、mimimamuの幅がうまく見れない
+　 - 例 $w_2Relu(w_1x+b)=w_1w_2x+w_2b_1+b_2$の $w_1,w_2$の間のスケール不定性
+　 
+## 仮説
+小さいバッチサイズはflatな谷をもたらし汎化性能を高める　ー＞　↑の1D補間の可視化では(陰的？)正則化するとこの仮説と矛盾してしまう(どちらも言えてしまう)
+## 提案
+filterwise normalization
+
+$$d_{ij} <= \frac{d_{ij}}{||d_{ij}||} || \theta_{ij} ||$$
+jth filter,ith layer
+
+## 実験
+- CIFAR-10,9層VGG
+    - 正則化してもflat/sharp minimaの関係が変わらない
+- CIFAR-10,Resnet 20,56,110 skipある/なし
+    - 層が深くなると凸性が下がるがskipあると緩和される(skipなしはchaotic landscape,汎化性がない)
+    - skipなしは初期値によってはlocal minimaにはまり込む(本当？)
+- 本当に凸/非凸性を見れているのか
+    - ランダムな2Dの曲率は全次元の曲率の重み付き
+
+- pathの可視化
+    - ランダムに2変数をとっても動いてる方向にはほとんど当たらないのでPCAの最大値をplotする。ー＞既に低次元(多様体)にいるからこれをやらないといけないということか？)
+    - 小さなbatch, 正則化は勾配に逆らう(山を乗り越えられるということ？)
 
 # 関連情報
 
@@ -13,7 +40,7 @@ https://www.coyote009.com/wp-content/uploads/2022/03/li2018_visualizing_loss_lan
 
 ## reference
 https://medium.com/mlearning-ai/visualising-the-loss-landscape-3a7bfa1c6fdf
-notebook付き　以下の実装の参考になる
+1D,2D plotのnotebook付き　以下の実装の参考になる
 
 ## pytorch実装
 https://github.com/xiangze/loss-landscape
@@ -22,6 +49,8 @@ pretraind weightをダウンロードして固定点近傍の1D,2D surfaceをplo
 https://github.com/xiangze/loss-landscape/blob/64ef4d57f8dabe79b57a637819c44e48eda98f33/plot_hessian_eigen.py#L60
 巨大なヘッシアンの固有値算出、繰り返し法で最大、最小の固有値を求めている。
 	ｰ>最大、最小値を取り除いていけば順次固有値が求まるのだろうか(素朴法)。QR分解とどっちがいい？
+
+MPI、粗行列モジュールを使っているがどの程度の計算量が必要かは書いてない。
 
 ## 被引用リスト
 https://scholar.google.co.jp/scholar?q=Visualizing+the+Loss+Landscape+of+Neural+Nets&hl=ja&as_sdt=0&as_vis=1&oi=scholart
