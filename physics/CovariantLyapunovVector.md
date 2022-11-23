@@ -22,3 +22,5 @@ SVDを使う
 - https://termoshtt.gitlab.io/chaos-da-book/dynamical_systems/lyapunov.html T.B.D
 
 # 感想
+
+固定点に落ちる軌道に対してCLVを使うことに意味はあるのか？
