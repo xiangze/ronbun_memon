@@ -50,6 +50,8 @@ https://indico.nitep.osaka-cu.ac.jp/event/65/
 - BZ反応
 
 $\dot{X}= k_1AY  − k_2XY + k_3AX − 2 k_4 X^2 $ 
+
 $\dot{Y}= −k_1AY − k_2XY + h k_5BZ$ 
+
 $\dot{Z}= 2k_3AX − k_5BZ $
 
