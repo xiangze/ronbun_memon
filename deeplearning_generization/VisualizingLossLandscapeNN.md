@@ -50,7 +50,50 @@ https://github.com/xiangze/loss-landscape/blob/64ef4d57f8dabe79b57a637819c44e48e
 巨大なヘッシアンの固有値算出、繰り返し法で最大、最小の固有値を求めている。
 	ｰ>最大、最小値を取り除いていけば順次固有値が求まるのだろうか(素朴法)。QR分解とどっちがいい？
 
-MPI、粗行列モジュールを使っているがどの程度の計算量が必要かは書いてない。
+MPI、疎行列モジュールを使っているがどの程度の計算量が必要かは書いてない。
+
+https://github.com/xiangze/loss-landscape/blob/64ef4d57f8dabe79b57a637819c44e48eda98f33/hess_vec_prod.py#L49
+```python
+def eval_hess_vec_prod(vec, params, net, criterion, dataloader, use_cuda=False):
+    """
+    Evaluate product of the Hessian of the loss function with a direction vector "vec".
+    The product result is saved in the grad of net.
+    Args:
+        vec: a list of tensor with the same dimensions as "params".
+        params: the parameter list of the net (ignoring biases and BN parameters).
+        net: model with trained parameters.
+        criterion: loss function.
+        dataloader: dataloader for the dataset.
+        use_cuda: use GPU.
+    """
+
+    if use_cuda:
+        net.cuda()
+        vec = [v.cuda() for v in vec]
+
+    net.eval()
+    net.zero_grad() # clears grad for every parameter in the net
+
+    for batch_idx, (inputs, targets) in enumerate(dataloader):
+        inputs, targets = Variable(inputs), Variable(targets)
+        if use_cuda:
+            inputs, targets = inputs.cuda(), targets.cuda()
+
+        outputs = net(inputs)
+        loss = criterion(outputs, targets)
+        grad_f = torch.autograd.grad(loss, inputs=params, create_graph=True)
+
+        # Compute inner product of gradient with the direction vector
+        prod = Variable(torch.zeros(1)).type(type(grad_f[0].data))
+        for (g, v) in zip(grad_f, vec):
+            prod = prod + (g * v).cpu().sum()
+
+        # Compute the Hessian-vector product, H*v
+        # prod.backward() computes dprod/dparams for every parameter in params and
+        # accumulate the gradients into the params.grad attributes
+        prod.backward()
+```
+Hessian計算部分 学習後netのパラメーターの勾配を求め、vecとの内積を求めている
 
 ## 被引用リスト
 https://scholar.google.co.jp/scholar?q=Visualizing+the+Loss+Landscape+of+Neural+Nets&hl=ja&as_sdt=0&as_vis=1&oi=scholart
