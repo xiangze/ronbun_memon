@@ -7,10 +7,10 @@ https://www.coyote009.com/wp-content/uploads/2022/03/li2018_visualizing_loss_lan
    - loss関数の可視化で何かがわかるか
    - 例えば、Loss関数のFlatness/Sharpnessと、汎化性能に相関があるというこれまでの主張は本当か？
 ## 既存の取組み
-   -(1) 重み空間中の2点間を結ぶ直線 $\theta_a=(1-a)\theta+a\theta$ 上のLoss関数のプロファイルをとる [Goodfellowなど]
+   - (1) 重み空間中の2点間を結ぶ直線 $\theta_a=(1-a)\theta+a\theta$ 上のLoss関数のプロファイルをとる [Goodfellowなど]
    - (2) 1,2次元グリッド
    - 問題点 Reluなど活性化関数によるスケール不定性があり、mimimamuの幅がうまく見れない
-　 - 例 $w_2Relu(w_1x+b)=w_1w_2x+w_2b_1+b_2$の $w_1,w_2$の間のスケール不定性
+　     - 例 $w_2Relu(w_1x+b)=w_1w_2x+w_2b_1+b_2$の $w_1,w_2$の間のスケール不定性
 　 
 ## 仮説
 小さいバッチサイズはflatな谷をもたらし汎化性能を高める　ー＞　↑の1D補間の可視化では(陰的？)正則化するとこの仮説と矛盾してしまう(どちらも言えてしまう)
@@ -93,7 +93,20 @@ def eval_hess_vec_prod(vec, params, net, criterion, dataloader, use_cuda=False):
         # accumulate the gradients into the params.grad attributes
         prod.backward()
 ```
-Hessian計算部分 学習後netのパラメーターの勾配を求め、vecとの内積を求めている
+Hessianとvecとの積計算部分 学習後netのパラメーターの勾配を求め、vecとの内積を求めている。呼び出し先で最大、最小固有値を計算している。
+
+```
+
+    def hess_vec_prod(vec):
+        hess_vec_prod.count += 1  # simulates a static variable
+        vec = npvec_to_tensorlist(vec, params)
+        start_time = time.time()
+        eval_hess_vec_prod(vec, params, net, criterion, dataloader, use_cuda)
+        prod_time = time.time() - start_time
+        if verbose and rank == 0: print("   Iter: %d  time: %f" % (hess_vec_prod.count, prod_time))
+        return gradtensor_to_npvec(net)
+```
+
 
 ## 被引用リスト
 https://scholar.google.co.jp/scholar?q=Visualizing+the+Loss+Landscape+of+Neural+Nets&hl=ja&as_sdt=0&as_vis=1&oi=scholart
