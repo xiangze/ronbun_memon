@@ -2,8 +2,9 @@
 https://arxiv.org/abs/1712.09913
 
 # 論文調査
-https://www.coyote009.com/loss-landscape
-https://www.coyote009.com/wp-content/uploads/2022/03/li2018_visualizing_loss_landscape.pdf
+- https://www.coyote009.com/loss-landscape
+- https://www.coyote009.com/wp-content/uploads/2022/03/li2018_visualizing_loss_landscape.pdf
+
 ## 問い：学習しやすいネットワークとは？　アーキテクチャ？パラメーター？
    - loss関数の可視化で何かがわかるか
    - 例えば、Loss関数のFlatness/Sharpnessと、汎化性能に相関があるというこれまでの主張は本当か？
@@ -96,8 +97,7 @@ def eval_hess_vec_prod(vec, params, net, criterion, dataloader, use_cuda=False):
 ```
 Hessianとvecとの積計算部分 学習後netのパラメーターの勾配を求め、vecとの内積を求めている。呼び出し先で最大、最小固有値を計算している。
 
-```
-
+```python
     def hess_vec_prod(vec):
         hess_vec_prod.count += 1  # simulates a static variable
         vec = npvec_to_tensorlist(vec, params)
