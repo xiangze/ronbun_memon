@@ -65,7 +65,16 @@ SDEから作られた生成モデルをnormalizing flowを用いて近似する�
 - autoencoderを使った任意のSDEに対する密度推定、最尤推定、 変分近似が可能になる
 - 任意の連続的normalizing flowで実装できる
 - neural ODEのアプローチをSDEに移行できる
-- 
+
+## Continuous Normalizing Flows
+dZ_t /dt=f()  (1)
+に従う(確率)変数Z_t
+
+### Theorem 1()
+(1)に従う変数の分布関数は
+
+## Adjoint Method
+
 ### Rough Path Theory
  SDEのpathの性質
  ODEの解で近似できるということが言える
