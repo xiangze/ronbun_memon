@@ -5,13 +5,19 @@ https://arxiv.org/abs/2209.07481
 - Annealing pathに対応したdivergenceの定義
 - 各温度の準加法平均的(logなｄ凸関数を適応したあとの加法)になる
 
+密度の幾何平均
+
 ## alpha-divergence
 
 ## f-divergence
 
 ## 3 Rho-Tau Bregman Information
 
-## 例
+- Theorem 1  Rho-Tau Bregman Information
+- 
+## 4 例
+- KL divergence
+mixture path
 
 ## gaugeについて
 
