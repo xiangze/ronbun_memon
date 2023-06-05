@@ -108,6 +108,38 @@ Hessianとvecとの積計算部分 学習後netのパラメーターの勾配を
         return gradtensor_to_npvec(net)
 ```
 
+NNパラメーターのset,get net_plotter.py
+https://github.com/xiangze/loss-landscape/blob/64ef4d57f8dabe79b57a637819c44e48eda98f33/net_plotter.py
+```python
+################################################################################
+#                 Supporting functions for weights manipulation
+################################################################################
+def get_weights(net):
+    """ Extract parameters from net, and return a list of tensors"""
+    return [p.data for p in net.parameters()]
+
+def set_weights(net, weights, directions=None, step=None):
+    """
+        Overwrite the network's weights with a specified list of tensors
+        or change weights along directions with a step size.
+    """
+    if directions is None:
+        # You cannot specify a step length without a direction.
+        for (p, w) in zip(net.parameters(), weights):
+            p.data.copy_(w.type(type(p.data)))
+    else:
+        assert step is not None, 'If a direction is specified then step must be specified as well'
+
+        if len(directions) == 2:
+            dx = directions[0]
+            dy = directions[1]
+            changes = [d0*step[0] + d1*step[1] for (d0, d1) in zip(dx, dy)]
+        else:
+            changes = [d*step for d in directions[0]]
+
+        for (p, w, d) in zip(net.parameters(), weights, changes):
+            p.data = w + torch.Tensor(d).type(type(w))
+```
 
 ## 被引用リスト
 https://scholar.google.co.jp/scholar?q=Visualizing+the+Loss+Landscape+of+Neural+Nets&hl=ja&as_sdt=0&as_vis=1&oi=scholart
