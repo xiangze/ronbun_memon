@@ -2,6 +2,7 @@
 https://proceedings.mlr.press/v80/baity-jesi18a/baity-jesi18a.pdf
 https://iopscience.iop.org/article/10.1088/1742-5468/ab3281
 
+## 概要 
 We analyze numerically the training dynamics of deep neural networks (DNN) by using methods developed in statistical physics of glassy systems. 
 
 The two main issues we address are 
@@ -17,3 +18,6 @@ Our findings, obtained for different architectures and datasets, suggest that du
 
 
 
+## コメント
+
+数値実験の結果の報告flat minimaとガラス的挙動、ガラス相？は等価か
